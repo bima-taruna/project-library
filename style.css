@@ -6,4 +6,20 @@
 
 body {
   font-family: Roboto, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3deba;
+  overflow: auto;
+}
+
+header {
+  width: 100%;
+  padding: 2.5rem;
+  background-color: #a9907e;
+  color: #f3deba;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
 }
