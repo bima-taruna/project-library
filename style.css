@@ -22,4 +22,39 @@ header {
   z-index: 2;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 > svg {
+  width: 3rem;
+}
+
+.add-button {
+  border: none;
+  background-color: #f3deba;
+  color: #675d50;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-button:hover {
+  background-color: #675d50;
+  color: #f3deba;
+}
+
+.add-button > svg {
+  width: 2rem;
 }
