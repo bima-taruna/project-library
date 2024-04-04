@@ -58,3 +58,11 @@ h1 > svg {
 .add-button > svg {
   width: 2rem;
 }
+
+.books {
+  padding: 3rem;
+}
+
+.books > .card > ul {
+  list-style: none;
+}
