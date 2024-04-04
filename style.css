@@ -62,6 +62,7 @@ h1 > svg {
 .books {
   padding: 3rem;
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
 }
@@ -104,6 +105,7 @@ h1 > svg {
   border: none;
   color: #675d50;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .delete-button {
@@ -113,6 +115,13 @@ h1 > svg {
   width: 2rem;
   border: none;
   color: red;
+  cursor: pointer;
+}
+
+.icon {
+  width: 100%;
+  filter: invert(16%) sepia(99%) saturate(7404%) hue-rotate(4deg)
+    brightness(95%) contrast(118%);
 }
 
 .content {
