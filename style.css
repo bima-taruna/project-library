@@ -37,7 +37,7 @@ h1 > svg {
 
 .add-button {
   border: none;
-  background-color: #f3deba;
+  background-color: #abc4aa;
   color: #675d50;
   padding: 1rem 2rem;
   font-size: 1.5rem;
@@ -61,8 +61,67 @@ h1 > svg {
 
 .books {
   padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.books > .card > ul {
+.card {
+  background-color: white;
+  padding: 2rem;
+  position: relative;
+  color: #675d50;
+  border-radius: 0.5rem;
+  text-wrap: wrap;
+  word-break: break-all;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.author {
+  font-size: 1.5rem;
+}
+
+.pages {
+  font-size: 1.2rem;
+}
+
+.read {
+  width: 100%;
+}
+
+.read-button {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #abc4aa;
+  border: none;
+  color: #675d50;
+  font-weight: bold;
+}
+
+.delete-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 2rem;
+  border: none;
+  color: red;
+}
+
+.content {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
 }
