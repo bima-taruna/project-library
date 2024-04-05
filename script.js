@@ -8,6 +8,7 @@ const myBook = [
 ];
 const readButton = document.createElement("button");
 const deleteButton = document.createElement("button");
+const addButton = document.querySelector(".add-button");
 readButton.classList.add("read-button");
 readButton.textContent = "Read";
 const books = document.querySelector(".books");
