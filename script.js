@@ -11,6 +11,7 @@ const deleteButton = document.createElement("button");
 readButton.classList.add("read-button");
 readButton.textContent = "Read";
 const books = document.querySelector(".books");
+let modalTrigger = false;
 
 function Book(...params) {
   const [title, author, pages, isRead] = params;
@@ -23,7 +24,7 @@ function Book(...params) {
   };
   this.info = function () {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${
-      isRead ? "already read" : "not read yet"
+      isRead ? "already read" : "Haven't read yet"
     }`;
   };
 }
@@ -48,7 +49,7 @@ function createCard(...params) {
   titleList.textContent = title;
   authorList.textContent = author;
   pagesList.textContent = pages + " pages";
-  readButton.textContent = isRead ? "already read" : "not read yet";
+  readButton.textContent = isRead ? "Not read yet" : "Already Read";
   readList.appendChild(readButton);
   content.classList.add("content");
   card.classList.add("card");
