@@ -143,6 +143,7 @@ h1 > svg {
   height: 100vh;
   background-color: rgba(128, 128, 128, 0.5);
   z-index: 3;
+  display: none;
 }
 
 .modal {
@@ -155,4 +156,5 @@ h1 > svg {
   top: 50vh;
   z-index: 3;
   transform: translate(-50%, -50%);
+  display: inherit;
 }

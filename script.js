@@ -9,6 +9,8 @@ const myBook = [
 const readButton = document.createElement("button");
 const deleteButton = document.createElement("button");
 const addButton = document.querySelector(".add-button");
+const overlay = document.querySelector(".overlay");
+const modal = document.querySelector(".modal");
 readButton.classList.add("read-button");
 readButton.textContent = "Read";
 const books = document.querySelector(".books");
@@ -79,6 +81,19 @@ function loadBooks() {
       createCard(item.title, item.author, item.pages, item.title)
     );
   });
+}
+
+addButton.addEventListener("click", () => {
+  modalTrigger = !modalTrigger;
+  showModal();
+});
+
+function showModal() {
+  if (modalTrigger) {
+    overlay.style.display = "block";
+  } else {
+    overlay.style.display = "none";
+  }
 }
 
 loadBooks();
