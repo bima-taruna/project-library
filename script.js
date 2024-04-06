@@ -10,26 +10,19 @@ const pages = document.getElementById("pages");
 const isRead = document.getElementById("isRead");
 const books = document.querySelector(".books");
 let modalTrigger = false;
-let index = 0;
 
 addToArray.addEventListener("click", (e) => {
   e.preventDefault();
-  addBookToLibrary(
-    index,
-    title.value,
-    author.value,
-    pages.value,
-    isRead.checked
-  );
+  addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
   modalTrigger = false;
   toogleModal();
   loadBooks();
   giveReadFunction();
+  giveDeleteFunction();
 });
 
 function Book(...params) {
-  const [index, title, author, pages, isRead] = params;
-  this.index = index;
+  const [title, author, pages, isRead] = params;
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -48,7 +41,6 @@ Book.prototype.toogleRead = function () {
 function addBookToLibrary(...params) {
   const newBook = new Book(...params);
   myBook.push(newBook);
-  index++;
 }
 
 function createCard(...params) {
@@ -69,7 +61,9 @@ function createCard(...params) {
   titleList.textContent = title;
   authorList.textContent = author;
   pagesList.textContent = pages + " pages";
-  readButton.textContent = isRead ? "Not read yet" : "Already Read";
+  readButton.textContent = isRead ? "Already Read" : "Not read yet";
+  readButton.style.backgroundColor = isRead ? "#abc4aa" : "red";
+  readButton.style.color = isRead ? "#675d50" : "white";
   readList.appendChild(readButton);
   content.classList.add("content");
   card.classList.add("card");
@@ -94,12 +88,12 @@ function createDeleteButton() {
 }
 
 function loadBooks() {
-  while (books.firstChild) {
+  while (books.children.length > 0) {
     books.removeChild(books.firstChild);
   }
   myBook.forEach((item) => {
     books.appendChild(
-      createCard(item.title, item.author, item.pages, item.title)
+      createCard(item.title, item.author, item.pages, item.isRead)
     );
   });
   console.log(myBook);
@@ -118,7 +112,21 @@ function giveReadFunction() {
   readButtons.forEach((button, i) => {
     button.addEventListener("click", () => {
       myBook[i].toogleRead();
-      button.textContent = myBook[i].isRead ? "Not read yet" : "Already Read";
+      loadBooks();
+      giveReadFunction();
+      giveDeleteFunction();
+    });
+  });
+}
+
+function giveDeleteFunction() {
+  const deleteButtons = document.querySelectorAll(".delete-button");
+  deleteButtons.forEach((button, i) => {
+    button.addEventListener("click", () => {
+      myBook.splice(i, 1);
+      loadBooks();
+      giveReadFunction();
+      giveDeleteFunction();
     });
   });
 }
