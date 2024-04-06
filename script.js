@@ -1,7 +1,7 @@
 const myBook = [];
 
 const addButton = document.querySelector(".add-button");
-const addToArray = document.querySelector(".confirm");
+const addBook = document.querySelector(".add-book");
 const overlay = document.querySelector(".overlay");
 const modal = document.querySelector(".modal");
 const title = document.getElementById("title");
@@ -11,7 +11,7 @@ const isRead = document.getElementById("isRead");
 const books = document.querySelector(".books");
 let modalTrigger = false;
 
-addToArray.addEventListener("click", (e) => {
+addBook.addEventListener("submit", (e) => {
   e.preventDefault();
   addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
   modalTrigger = false;

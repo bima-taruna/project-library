@@ -9,7 +9,8 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #f3deba;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 header {
@@ -136,7 +137,7 @@ h1 > svg {
 }
 
 .overlay {
-  position: fixed; /* Positioning and size */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -148,7 +149,7 @@ h1 > svg {
 
 .modal {
   width: 40%;
-  height: 60%;
+  height: 70%;
   background-color: white;
   color: #675d50;
   position: fixed;
@@ -158,9 +159,77 @@ h1 > svg {
   transform: translate(-50%, -50%);
   display: inherit;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .modal-title {
   text-align: center;
+}
+
+.title-input,
+.author-input,
+.pages-input,
+.isRead-input {
+  width: 100%;
+}
+
+.bottom-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.isRead-input {
+  display: flex;
+  align-items: center;
+}
+
+label:last-of-type {
+  flex: 3;
+  text-align: right;
+}
+
+#isRead {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.confirm {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background-color: rgb(0, 173, 0);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
 }

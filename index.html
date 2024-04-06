@@ -32,19 +32,29 @@
     <main>
       <div class="overlay">
         <div class="modal">
-          <h4 class="modal-title">Book Description :</h4>
-          <form>
+          <h3 class="modal-title">Book Description :</h3>
+          <form class="add-book">
             <fieldset>
-              <label for="title">Title</label>
-              <input type="text" name="title" id="title" />
-              <label for="author">Author</label>
-              <input type="text" name="author" id="author" />
-              <label for="pages">Pages</label>
-              <input type="number" name="pages" id="pages" />
-              <label for="isRead">Did you already read this book?</label>
-              <input type="checkbox" name="isRead" id="isRead" />
+              <div class="title-input">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" required />
+              </div>
+              <div class="author-input">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" required />
+              </div>
+              <div class="bottom-section">
+                <div class="pages-input">
+                  <label for="pages">Pages</label>
+                  <input type="number" name="pages" id="pages" required />
+                </div>
+                <div class="isRead-input">
+                  <label for="isRead">Did you already read this book?</label>
+                  <input type="checkbox" name="isRead" id="isRead" required />
+                </div>
+              </div>
             </fieldset>
-            <button class="confirm">Add</button>
+            <button type="submit" class="confirm">Add</button>
           </form>
         </div>
       </div>
