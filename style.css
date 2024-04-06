@@ -157,4 +157,10 @@ h1 > svg {
   z-index: 3;
   transform: translate(-50%, -50%);
   display: inherit;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.modal-title {
+  text-align: center;
 }
