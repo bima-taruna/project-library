@@ -109,7 +109,8 @@ h1 > svg {
   cursor: pointer;
 }
 
-.delete-button {
+.delete-button,
+.close-modal {
   position: absolute;
   top: 12px;
   right: 12px;
