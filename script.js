@@ -1,7 +1,7 @@
 const myBook = [];
 
 const addButton = document.querySelector(".add-button");
-const addBook = document.querySelector(".add-book");
+const addBookForm = document.querySelector(".add-book");
 const overlay = document.querySelector(".overlay");
 const modal = document.querySelector(".modal");
 const title = document.getElementById("title");
@@ -9,9 +9,10 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const isRead = document.getElementById("isRead");
 const books = document.querySelector(".books");
+const closeModalButton = document.querySelector(".close-modal");
 let modalTrigger = false;
 
-addBook.addEventListener("submit", (e) => {
+addBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
   modalTrigger = false;
@@ -19,6 +20,11 @@ addBook.addEventListener("submit", (e) => {
   loadBooks();
   giveReadFunction();
   giveDeleteFunction();
+});
+
+closeModalButton.addEventListener("click", () => {
+  modalTrigger = false;
+  toogleModal();
 });
 
 function Book(...params) {
