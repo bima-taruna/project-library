@@ -13,14 +13,19 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  width: 100%;
+  padding-top: 20vh;
+}
+
 header {
   width: 100%;
   padding: 2.5rem;
   background-color: #a9907e;
   color: #f3deba;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,7 +149,7 @@ h1 > svg {
   width: 100vw;
   height: 100vh;
   background-color: rgba(128, 128, 128, 0.5);
-  z-index: 3;
+  z-index: 101;
   display: none;
 }
 
@@ -156,7 +161,7 @@ h1 > svg {
   position: fixed;
   left: 50vw;
   top: 50vh;
-  z-index: 3;
+  z-index: 102;
   transform: translate(-50%, -50%);
   display: inherit;
   border-radius: 1rem;
