@@ -26,6 +26,25 @@ let library = (function () {
     toogleModal();
   });
 
+  books.addEventListener("click", (e) => {
+    const { target } = e;
+    const targetElement = target.closest(".delete-button");
+    if (targetElement) {
+      let i = indexInParent(targetElement.closest(".card"));
+      deleteBook(i);
+    }
+  });
+
+  function indexInParent(node) {
+    var children = node.parentNode.childNodes;
+    var num = 0;
+    for (var i = 0; i < children.length; i++) {
+      if (children[i] == node) return num;
+      if (children[i].nodeType == 1) num++;
+    }
+    return -1;
+  }
+
   loadBooks();
 
   function loadBooks() {
@@ -83,7 +102,12 @@ let library = (function () {
     toogleModal();
     loadBooks();
     giveReadFunction();
-    giveDeleteFunction();
+    // giveDeleteFunction();
+  }
+
+  function deleteBook(index) {
+    myBook.splice(index, 1);
+    loadBooks();
   }
 
   function toogleModal() {
@@ -101,26 +125,13 @@ let library = (function () {
         myBook[i].toogleRead();
         loadBooks();
         giveReadFunction();
-        giveDeleteFunction();
+        // giveDeleteFunction();
       });
     });
   }
-
-  function giveDeleteFunction() {
-    const deleteButtons = document.querySelectorAll(".delete-button");
-    deleteButtons.forEach((button, i) => {
-      button.addEventListener("click", () => {
-        myBook.splice(i, 1);
-        loadBooks();
-        giveReadFunction();
-        giveDeleteFunction();
-      });
-    });
-  }
-
-  function deleteBooks(params) {}
 
   return {
     addBookToLibrary,
+    deleteBook,
   };
 })();
