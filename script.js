@@ -35,6 +35,15 @@ let library = (function () {
     }
   });
 
+  books.addEventListener("click", (e) => {
+    const { target } = e;
+    const targetElement = target.closest(".read-button");
+    if (targetElement) {
+      let i = indexInParent(targetElement.closest(".card"));
+      toogleRead(i);
+    }
+  });
+
   function indexInParent(node) {
     var children = node.parentNode.childNodes;
     var num = 0;
@@ -66,7 +75,7 @@ let library = (function () {
         <li class="read">
           <button class="read-button" style="background-color: ${
             item.isRead ? "#abc4aa" : "red"
-          }; color: ${isRead ? "#675d50" : "white"};">${
+          }; color: ${item.isRead ? "#675d50" : "white"};">${
         item.isRead ? "Already read" : "Not read yet"
       }</button>
         </li>
@@ -101,12 +110,15 @@ let library = (function () {
     modalTrigger = false;
     toogleModal();
     loadBooks();
-    giveReadFunction();
-    // giveDeleteFunction();
   }
 
   function deleteBook(index) {
     myBook.splice(index, 1);
+    loadBooks();
+  }
+
+  function toogleRead(index) {
+    myBook[index].toogleRead();
     loadBooks();
   }
 
@@ -118,20 +130,9 @@ let library = (function () {
     }
   }
 
-  function giveReadFunction() {
-    const readButtons = document.querySelectorAll(".read-button");
-    readButtons.forEach((button, i) => {
-      button.addEventListener("click", () => {
-        myBook[i].toogleRead();
-        loadBooks();
-        giveReadFunction();
-        // giveDeleteFunction();
-      });
-    });
-  }
-
   return {
     addBookToLibrary,
     deleteBook,
+    toogleRead,
   };
 })();
