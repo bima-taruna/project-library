@@ -110,4 +110,9 @@ class Library {
     }
     return -1;
   };
+
+  deleteBook = (index) => {
+    this.#myBook.splice(index, 1);
+    this.loadBooks;
+  };
 }
