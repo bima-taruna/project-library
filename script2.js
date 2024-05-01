@@ -19,43 +19,75 @@ class Book {
 }
 
 class Library {
-  #myBook = [];
-  #modalTrigger = false;
-  #addButton = document.querySelector(".add-button");
-  #addBookForm = document.querySelector(".add-book");
-  #overlay = document.querySelector(".overlay");
-  #title = document.getElementById("title");
-  #author = document.getElementById("author");
-  #pages = document.getElementById("pages");
-  #isRead = document.getElementById("isRead");
-  #books = document.querySelector(".books");
-  #closeModalButton = document.querySelector(".close-modal");
+  #myBook;
+  #modalTrigger;
+  #addButton;
+  #addBookForm;
+  #overlay;
+  #title;
+  #author;
+  #pages;
+  #isRead;
+  #books;
+  #closeModalButton;
 
   constructor() {
-    this.loadBooks;
+    this.#myBook = [];
+    this.#modalTrigger = false;
+    this.#addButton = document.querySelector(".add-button");
+    this.#addBookForm = document.querySelector(".add-book");
+    this.#overlay = document.querySelector(".overlay");
+    this.#title = document.getElementById("title");
+    this.#author = document.getElementById("author");
+    this.#pages = document.getElementById("pages");
+    this.#isRead = document.getElementById("isRead");
+    this.#books = document.querySelector(".books");
+    this.#closeModalButton = document.querySelector(".close-modal");
+  }
+
+  render = () => {
+    this.#loadBooks();
 
     this.#addButton.addEventListener("click", () => {
       this.#modalTrigger = !this.#modalTrigger;
-      this.toogleModal;
+      this.#toogleModal();
     });
 
     this.#addBookForm.addEventListener("submit", (e) => {
       e.preventDefault();
       this.addBookToLibrary(
-        title.value,
-        author.value,
-        pages.value,
-        isRead.checked
+        this.#title.value,
+        this.#author.value,
+        this.#pages.value,
+        this.#isRead.checked
       );
     });
 
     this.#closeModalButton.addEventListener("click", () => {
       this.#modalTrigger = false;
-      this.toogleModal;
+      this.#toogleModal();
     });
-  }
 
-  loadBooks = () => {
+    this.#books.addEventListener("click", (e) => {
+      const { target } = e;
+      const targetElement = target.closest(".delete-button");
+      if (targetElement) {
+        let i = this.#indexInParent(targetElement.closest(".card"));
+        this.deleteBook(i);
+      }
+    });
+
+    this.#books.addEventListener("click", (e) => {
+      const { target } = e;
+      const targetElement = target.closest(".read-button");
+      if (targetElement) {
+        let i = this.#indexInParent(targetElement.closest(".card"));
+        this.toogleRead(i);
+      }
+    });
+  };
+
+  #loadBooks = () => {
     while (this.#books.children.length > 0) {
       this.#books.removeChild(this.#books.firstChild);
     }
@@ -89,19 +121,19 @@ class Library {
     const newBook = new Book(...params);
     this.#myBook.push(newBook);
     this.#modalTrigger = false;
-    this.toogleModal;
-    this.loadBooks;
+    this.#toogleModal();
+    this.#loadBooks();
   };
 
-  toogleModal = () => {
+  #toogleModal = () => {
     if (this.#modalTrigger) {
-      overlay.style.display = "block";
+      this.#overlay.style.display = "block";
     } else {
-      overlay.style.display = "none";
+      this.#overlay.style.display = "none";
     }
   };
 
-  indexInParent = (node) => {
+  #indexInParent = (node) => {
     var children = node.parentNode.childNodes;
     var num = 0;
     for (var i = 0; i < children.length; i++) {
@@ -113,11 +145,15 @@ class Library {
 
   deleteBook = (index) => {
     this.#myBook.splice(index, 1);
-    this.loadBooks;
+    this.#loadBooks();
   };
 
   toogleRead = (index) => {
     this.#myBook[index].toogleRead();
-    this.loadBooks;
+    this.#loadBooks();
   };
 }
+
+let libraryApp = new Library();
+
+libraryApp.render();
