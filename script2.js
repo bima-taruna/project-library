@@ -115,4 +115,9 @@ class Library {
     this.#myBook.splice(index, 1);
     this.loadBooks;
   };
+
+  toogleRead = (index) => {
+    this.#myBook[index].toogleRead();
+    this.loadBooks;
+  };
 }
